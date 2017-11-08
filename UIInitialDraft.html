@@ -3,7 +3,12 @@
 		<title>UI Initial Draft</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <link href="style_timeline.css" rel="stylesheet" />
+    <link href="sitestyle.css" rel="stylesheet" />
+    <script type="text/javascript" src="script.js" charset="utf-8"></script>
+
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
@@ -14,10 +19,10 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		    <link href="sitestyle.css" rel="stylesheet" />
 
-		 <script src="timeline.js"></script>
     	<script src="imageSliderScript.js"></script>
     	<script src="imageGridScript.js"></script>
-    	<script src="sitescript.js"></script>
+    	<script src="timeline.js"></script>
+
 	</head>
 	<body>
 
@@ -148,8 +153,8 @@
 				    	<h2>Swipe over the images to move through time</h2>
 						<h2>Click on an image to view the memento</h2>
 						<div>
-						<button type="button" id='play'>Play</button>
-						<button type="button" id='pause'>Pause</button>
+						<button type="button" class="btn" id='play'>Play</button>
+						<button type="button" class="btn" id='pause'>Pause</button>
 						</div>
 						<img id="myImage" class="heightSet"/>
 						<p id="myContent"></p>

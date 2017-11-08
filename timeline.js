@@ -1,3 +1,5 @@
+
+var jsonObjRes = {};
 (function(window, document, undefined){
 
 
@@ -575,7 +577,11 @@
             el.trigger("click");
         }
     });
-    $(function(){
+
+
+
+   /* modified to the following function as the ui hits the server once to get all the data 
+   $(function(){
         var curJSONFileName= "timemapsumjson_"+collectionsList[parseInt(location.search.split("=")[1])-1].replace(/[^a-z0-9]/gi, '').toLowerCase();
 		$(".collection_name").html(collectionsList[parseInt(location.search.split("=")[1])-1]);
        
@@ -602,6 +608,60 @@
 				}
 			});
 		},'json');  
+    }); */
+
+   $(function(){
+
+    $(".getJSONFromServer").click(function(event){
+            if($(this).parents("form")[0].checkValidity()){
+                    event.preventDefault();
+                var SERVERHOST = "http://localhost:3000/GetResponse";
+                var queryStr="?"+$(".argumentsForm input").serialize();             
+                $.ajax({
+                  type: "GET",
+/*                url: SERVERHOST+queryStr,
+*/                url:'timemapsumjson_httpgulflabororg.json',
+                  dataType: "text",
+                  success: function( data, textStatus, jqXHR) { 
+
+                    jsonObjRes= $.parseJSON($.trim(data));
+
+                    window.timeline = new Timeline(jsonObjRes);
+                    // place where the notch width is being reduced t0 2px.
+                    $("[data-notch-series='Non-Thumbnail Mementos']").width("2px");
+                    // Color is changed in the Array at 284 line as that is the right place
+                   // $("[data-notch-series='Non-Thumbnail Mementos']").css("background","#948989");            
+                    new Zoom("in");
+                    new Zoom("out");
+                    var chooseNext = new Chooser("next");
+                    var choosePrev = new Chooser("prev");
+                    chooseNext.click();
+                    $(document).bind('keydown', function(e) {
+                        if (e.keyCode === 39) {
+                            chooseNext.click();
+                        } else if (e.keyCode === 37) {
+                            choosePrev.click();
+                        } else {
+                            return;
+                        }
+                    });
+
+                    console.log(jsonObjRes);        
+                    drawImageGrid(jsonObjRes); // calling Image Grid Function here          
+                    drawImageSlider(jsonObjRes);
+                    
+                    $(".tabContentWrapper").show();
+                  },
+                  error: function( data, textStatus, jqXHR) {
+                    var errMsg = "some problem fetching the response";
+                    alert(errMsg);   
+                  }
+                });
+            }
+            
+        });
     });
+
+
 
 })(window, document);
