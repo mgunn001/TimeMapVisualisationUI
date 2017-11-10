@@ -616,7 +616,8 @@ var jsonObjRes = {};
             if($(this).parents("form")[0].checkValidity()){
                     event.preventDefault();
                 var SERVERHOST = "http://localhost:3000/alsummarizedtimemap";
-                var queryStr="?"+$(".argumentsForm input").serialize();             
+                var queryStr="?"+$(".argumentsForm input").serialize();    
+                $("#busy-loader").show();        
                 $.ajax({
                   type: "GET",
                   url: SERVERHOST+queryStr,
@@ -650,9 +651,9 @@ var jsonObjRes = {};
                     drawImageGrid(jsonObjRes); // calling Image Grid Function here          
                     drawImageSlider(jsonObjRes);
                     
-                    $(".tabContentWrapper").show();
                   },
                   error: function( data, textStatus, jqXHR) {
+                    $("#busy-loader").hide();        
                     var errMsg = "some problem fetching the response";
                     alert(errMsg);   
                   }

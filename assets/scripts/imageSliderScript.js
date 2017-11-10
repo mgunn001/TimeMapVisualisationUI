@@ -67,6 +67,7 @@
 
 		
 		$('.tabContentWrapper').waitForImages(function() {
+			$("#busy-loader").hide();
 		   	$(".tabContentWrapper").show();  /* now that all the 3 visualization graphs are initialized and images are got to clinet side and ready to be rendered, 
 		   										now unhiding the tab content */
 		});
