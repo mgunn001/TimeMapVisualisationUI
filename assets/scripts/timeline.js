@@ -1,6 +1,5 @@
 
 var jsonObjRes = {};
-   var SERVERHOST = "http://localhost:3000";
 (function(window, document, undefined){
 
 
@@ -616,11 +615,11 @@ var jsonObjRes = {};
     $(".getJSONFromServer").click(function(event){
             if($(this).parents("form")[0].checkValidity()){
                     event.preventDefault();
-                var path = "/alsummarizedtimemap";
+                var SERVERHOST = "http://localhost:3000/alsummarizedtimemap";
                 var queryStr="?"+$(".argumentsForm input").serialize();             
                 $.ajax({
                   type: "GET",
-                  url: SERVERHOST+path+queryStr,
+                  url: SERVERHOST+queryStr,
                 /* url:'timemapsumjson_httpgulflabororg.json', */
                   dataType: "text",
                   success: function( data, textStatus, jqXHR) { 
