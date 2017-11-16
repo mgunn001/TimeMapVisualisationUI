@@ -624,33 +624,38 @@ var jsonObjRes = {};
                 /* url:'timemapsumjson_httpgulflabororg.json', */
                   dataType: "text",
                   success: function( data, textStatus, jqXHR) { 
+                      $("#busy-loader").hide();        
+                    try{
+                        jsonObjRes= $.parseJSON($.trim(data));
+                         window.timeline = new Timeline(jsonObjRes);
+                        // place where the notch width is being reduced t0 2px.
+                        $("[data-notch-series='Non-Thumbnail Mementos']").width("2px");
+                        // Color is changed in the Array at 284 line as that is the right place
+                       // $("[data-notch-series='Non-Thumbnail Mementos']").css("background","#948989");            
+                        new Zoom("in");
+                        new Zoom("out");
+                        var chooseNext = new Chooser("next");
+                        var choosePrev = new Chooser("prev");
+                        chooseNext.click();
+                        $(document).bind('keydown', function(e) {
+                            if (e.keyCode === 39) {
+                                chooseNext.click();
+                            } else if (e.keyCode === 37) {
+                                choosePrev.click();
+                            } else {
+                                return;
+                            }
+                        });
 
-                    jsonObjRes= $.parseJSON($.trim(data));
+                        console.log(jsonObjRes);        
+                        drawImageGrid(jsonObjRes); // calling Image Grid Function here          
+                        drawImageSlider(jsonObjRes);
+                    } 
+                    catch(err){
+                        alert($.trim(data));
+                    }
 
-                    window.timeline = new Timeline(jsonObjRes);
-                    // place where the notch width is being reduced t0 2px.
-                    $("[data-notch-series='Non-Thumbnail Mementos']").width("2px");
-                    // Color is changed in the Array at 284 line as that is the right place
-                   // $("[data-notch-series='Non-Thumbnail Mementos']").css("background","#948989");            
-                    new Zoom("in");
-                    new Zoom("out");
-                    var chooseNext = new Chooser("next");
-                    var choosePrev = new Chooser("prev");
-                    chooseNext.click();
-                    $(document).bind('keydown', function(e) {
-                        if (e.keyCode === 39) {
-                            chooseNext.click();
-                        } else if (e.keyCode === 37) {
-                            choosePrev.click();
-                        } else {
-                            return;
-                        }
-                    });
-
-                    console.log(jsonObjRes);        
-                    drawImageGrid(jsonObjRes); // calling Image Grid Function here          
-                    drawImageSlider(jsonObjRes);
-                    
+                   
                   },
                   error: function( data, textStatus, jqXHR) {
                     $("#busy-loader").hide();        
