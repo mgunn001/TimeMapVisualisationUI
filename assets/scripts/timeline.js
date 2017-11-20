@@ -615,9 +615,11 @@ var jsonObjRes = {};
     $(".getJSONFromServer").click(function(event){
             if($(this).parents("form")[0].checkValidity()){
                     event.preventDefault();
-                var SERVERHOST = "http://localhost:3000/alsummarizedtimemap";
-                var queryStr="?"+$(".argumentsForm input").serialize();    
-                $("#busy-loader").show();        
+                var SERVERHOST = "http://tmvis.cs.odu.edu/alsummarizedtimemap";
+               // var queryStr="?"+$(".argumentsForm input").serialize();    
+               var queryStr="/"+$('.argumentsForm input[name=primesource]:checked').val()+"/"+$('.argumentsForm #collectionNo').val()+"/"+$('.argumentsForm #urirIP').val()
+                $("#busy-loader").show();  
+
                 $.ajax({
                   type: "GET",
                   url: SERVERHOST+queryStr,
@@ -653,6 +655,7 @@ var jsonObjRes = {};
                     } 
                     catch(err){
                         alert($.trim(data));
+                        $(".tabContentWrapper").hide();  
                     }
 
                    
