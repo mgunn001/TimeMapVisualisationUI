@@ -616,13 +616,8 @@ var jsonObjRes = {};
     $(".getJSONFromServer").click(function(event){
 
             var collectionIdentifer = $('.argumentsForm #collectionNo').val();
-            if($("input[name='primesource']:checked").val() == "internetarchive"){
+            if(collectionIdentifer == ""){
                 collectionIdentifer = "all";
-                $("#collectionNo").removeAttr("required");
-            }else{
-                
-                $("#collectionNo").attr("required",true);
-
             }
 
             if($(this).parents("form")[0].checkValidity()){
