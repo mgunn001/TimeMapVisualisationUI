@@ -21,6 +21,23 @@
     	<script src="./assets/scripts/imageGridScript.js"></script>
     	<script src="./assets/scripts/timeline.js"></script>
     	<script src="./assets/scripts/waitforimages.js"></script>
+    	<script type="text/javascript">
+    		$(document).ready(function(){
+    			$("input[name='primesource']").click(function(){
+	    			if($(this).val() == "internetarchive"){
+	    				$("#collectionNo").attr("disabled",true);
+
+	    			}else{
+	    				$("#collectionNo").removeAttr("disabled");
+	    				
+	    			}
+					
+				});
+
+    		});
+    		
+    		
+    	</script>
 
 	</head>
 	<body>
