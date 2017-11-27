@@ -22,8 +22,6 @@
     	<script src="./assets/scripts/timeline.js"></script>
     	<script src="./assets/scripts/waitforimages.js"></script>
 
-    	
-
 	</head>
 	<body>
 
@@ -40,7 +38,7 @@
 					<div class="row orgAndCollNoWrapper form-inline" >
 						
 							<div class="form-group">
-								<label class="radio-inline"><input type="radio" name="primesource" checked="checked" value="archiveit">Archive-IT</label>
+								<label class="radio-inline"><input type="radio" name="primesource" checked="checked" value="archiveit">Archive-It</label>
 								<label class="radio-inline"><input type="radio" name="primesource" value="internetarchive">Internet Archive</label>
 		<!-- 						<label class="radio-inline"><input type="radio" name="optradio">Memgator</label>
 		 -->					</div>
@@ -102,7 +100,9 @@
 							</script>
 
 							<script id="series_legend_tmpl" type="text/jst">
-									<div class="series_legend_item" data-series="<%= name %>"><span class="series_legend_swatch" style="background-color:<%= color %>">&nbsp;</span> <span class="series_legend_text"><%= name %></span></div>
+									<!-- <div class="series_legend_item" data-series="<%= name %>"><span class="series_legend_swatch" style="background-color:<%= color %>">&nbsp;</span> <span class="series_legend_text"><%= name %></span></div> -->
+								<div class="series_legend_item"><span class="series_legend_swatch" style="background-color:<%= color %>">&nbsp;</span> <span class="series_legend_text"><%= name %></span></div>
+
 							</script>
 							<script id="card_tmpl" type="text/jst">
 									<div class="timeline_card_container">

@@ -552,7 +552,9 @@ var jsonObjRes = {};
             var el;
              /*Just commenting the following line, as the click of next and previous must be taken only to Thumbnail part,
              * So have manually added up a class to the nothces itself, in <script id="notch_tmpl" type="text/jst"> of timeline_*.html */
-            //var notches    = this.notches.not(".series_inactive"); 
+           // var notches    = this.notches.not(".series_inactive"); 
+
+            // uncommenting again as to follow the old style of navigating to even non-thumbnails
             var notches    = this.notches.not(".series_inactive"); 
             var isOnlyNTMSelected = false;
             if($(".series_legend_item_inactive").length == 1){
@@ -611,13 +613,23 @@ var jsonObjRes = {};
     }); */
 
    $(function(){
-
     $(".getJSONFromServer").click(function(event){
+
+            var collectionIdentifer = $('.argumentsForm #collectionNo').val();
+            if($("input[name='primesource']:checked").val() == "internetarchive"){
+                collectionIdentifer = "all";
+                $("#collectionNo").removeAttr("required");
+            }else{
+                
+                $("#collectionNo").attr("required",true);
+
+            }
+
             if($(this).parents("form")[0].checkValidity()){
                     event.preventDefault();
                 var SERVERHOST = "http://tmvis.cs.odu.edu/alsummarizedtimemap";
                // var queryStr="?"+$(".argumentsForm input").serialize();    
-               var queryStr="/"+$('.argumentsForm input[name=primesource]:checked').val()+"/"+$('.argumentsForm #collectionNo').val()+"/"+$('.argumentsForm #urirIP').val()
+               var queryStr="/"+$('.argumentsForm input[name=primesource]:checked').val()+"/"+collectionIdentifer+"/"+$('.argumentsForm #urirIP').val()
                 $("#busy-loader").show();  
 
                 $.ajax({
