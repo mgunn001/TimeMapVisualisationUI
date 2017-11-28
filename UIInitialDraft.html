@@ -60,16 +60,16 @@
 		<!-- 						<label class="radio-inline"><input type="radio" name="optradio">Memgator</label>
 		 -->					</div>
 							<div class="form-group pull-right">
-								<label for="collectionNo">Collection Number</label>
-							    <input class="form-control" type="number" title="Collection Number"  name="ci"  id="collectionNo" placeholder="1068">
+								<label for="collectionNo">Collection Identifier</label>
+							    <input class="form-control" type="number" title="Collection Identifier"  name="ci"  id="collectionNo" placeholder="1068">
 							    <button class="btn getJSONFromServer"> Go </button>
 							</div>					
 					</div>
 				</form>
 			</div>
 
-			<div class="statsWrapper row">
-					<p> <b>Stats Go here </b></p>
+			<div class="statsWrapper row" style="display:none;">
+					<p> <b>Stats : </b><span class="collection_name"></span><span class="collection_stats"></span></p> 
 			</div>
 
 			<div class="row tabContentWrapper" style="display: none;">
@@ -82,7 +82,6 @@
 				<div class="tab-content">
 				  <div id="timeMap" class="tab-pane fade in active">
 				   	<div class="timeline_Wrapper content_focusedWrapper">
-						<h3>Timeline<span class="collection_name"></span><span class="collection_stats"></span></h3>
 						<div class="article">
 							<div id="timeline">
 								<div id="timeline_top_matter_container">
@@ -170,7 +169,7 @@
 				  	<div class="imageslider_wrapper content_focusedWrapper" style="margin-top: 1%;">
 				    	<h2>Swipe over the images to move through time</h2>
 						<h2>Click on an image to view the memento</h2>
-						<div>
+						<div class="buttonsWrapperSlider">
 						<button type="button" class="btn" id='play'>Play</button>
 						<button type="button" class="btn" id='pause'>Pause</button>
 						</div>
@@ -179,7 +178,7 @@
 				    </div>
 				  </div>
 				  <div id="imageGrid" class="tab-pane fade">				   
-				    <h2>Image Grid<span class="collection_name"></span><span class="collection_stats"></span></h2>
+				 
 					<p id="myContent"></p>
 					
 					<div class="grid-container">

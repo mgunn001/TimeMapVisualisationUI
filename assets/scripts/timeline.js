@@ -622,7 +622,8 @@ var jsonObjRes = {};
 
             if($(this).parents("form")[0].checkValidity()){
                     event.preventDefault();
-                var SERVERHOST = "http://tmvis.cs.odu.edu/alsummarizedtimemap";
+                var SERVERHOST = "http://tmvis.cs.odu.edu/alsummarizedtimemap"; // to hit the hosted server
+               //var SERVERHOST = "http://localhost:3000/alsummarizedtimemap"; // to hit the local one
                // var queryStr="?"+$(".argumentsForm input").serialize();    
                var queryStr="/"+$('.argumentsForm input[name=primesource]:checked').val()+"/"+collectionIdentifer+"/"+$('.argumentsForm #urirIP').val()
                 $("#busy-loader").show();  
@@ -635,7 +636,20 @@ var jsonObjRes = {};
                   success: function( data, textStatus, jqXHR) { 
                       $("#busy-loader").hide();        
                     try{
-                        jsonObjRes= $.parseJSON($.trim(data));
+                        data = $.trim(data).split("...");
+                        if(data.length > 1){
+                            if(data [1] == ""){
+                                data = data [0];
+                            }else{
+                                data = data [1];
+                            }
+                        }
+                        else{
+                            data = data [0];
+                        }
+
+                        jsonObjRes= $.parseJSON(data);
+                        $(".statsWrapper").show();
                          window.timeline = new Timeline(jsonObjRes);
                         // place where the notch width is being reduced t0 2px.
                         $("[data-notch-series='Non-Thumbnail Mementos']").width("2px");

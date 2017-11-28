@@ -45,7 +45,10 @@
 		box-sizing: border-box;
 	}
 	#myContent {
-		margin-left: 500px;
+		margin-left: 38%;
+	}
+	.buttonsWrapperSlider{
+		margin-left: 10%;
 	}
 	h2 {
 		font-family: 'Oswald', sans-serif;

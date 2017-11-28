@@ -9,7 +9,7 @@ function drawImageGrid(data){
 			imagesData_IG.push(obj);
 		}
 	});
-	var memStatStr = " - "+data.length+" mementos, "+imagesData_IG.length+" Unique Thumbnails(k=4)";
+	var memStatStr = data.length+" mementos, "+imagesData_IG.length+" Unique Thumbnails(k=4)";
 	$(".collection_stats").html(memStatStr);
 	console.log(memStatStr);
 	$.each(imagesData_IG, function(i){
