@@ -127,10 +127,7 @@
 		margin: auto;
 		<!-- margin: 0 0 10px; -->
 	}
-	/* class for 4 columns */
-	ul.rig.columns-4 li {
-		width: 21.5%;
-	}
+	
 
 	#busy-loader {
 	    background: url(ajax-loader.gif) no-repeat scroll center center #FFF;

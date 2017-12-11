@@ -619,13 +619,17 @@ var jsonObjRes = {};
             if(collectionIdentifer == ""){
                 collectionIdentifer = "all";
             }
+            var hammingDistance = $('.argumentsForm #hammingDistance').val();
+            if(hammingDistance == ""){
+                hammingDistance = 4;
+            }
 
             if($(this).parents("form")[0].checkValidity()){
-                    event.preventDefault();
-                var SERVERHOST = "http://tmvis.cs.odu.edu/alsummarizedtimemap"; // to hit the hosted server
+                event.preventDefault();
+               var SERVERHOST = "http://tmvis.cs.odu.edu/alsummarizedtimemap"; // to hit the hosted server
                //var SERVERHOST = "http://localhost:3000/alsummarizedtimemap"; // to hit the local one
                // var queryStr="?"+$(".argumentsForm input").serialize();    
-               var queryStr="/"+$('.argumentsForm input[name=primesource]:checked').val()+"/"+collectionIdentifer+"/"+$('.argumentsForm #urirIP').val()
+               var queryStr="/"+$('.argumentsForm input[name=primesource]:checked').val()+"/"+collectionIdentifer+"/"+hammingDistance+"/"+$('.argumentsForm #urirIP').val()
                 $("#busy-loader").show();  
 
                 $.ajax({
@@ -676,6 +680,7 @@ var jsonObjRes = {};
                     } 
                     catch(err){
                         alert($.trim(data));
+                        $(".statsWrapper").hide();
                         $(".tabContentWrapper").hide();  
                     }
 
