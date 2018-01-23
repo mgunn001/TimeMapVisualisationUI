@@ -626,8 +626,8 @@ var jsonObjRes = {};
 
             if($(this).parents("form")[0].checkValidity()){
                 event.preventDefault();
-               var SERVERHOST = "http://tmvis.cs.odu.edu/alsummarizedtimemap"; // to hit the hosted server
-               //var SERVERHOST = "http://localhost:3000/alsummarizedtimemap"; // to hit the local one
+               //var SERVERHOST = "http://tmvis.cs.odu.edu/alsummarizedtimemap"; // to hit the hosted server
+               var SERVERHOST = "http://localhost:3000/alsummarizedtimemap"; // to hit the local one
                // var queryStr="?"+$(".argumentsForm input").serialize();    
                var queryStr="/"+$('.argumentsForm input[name=primesource]:checked').val()+"/"+collectionIdentifer+"/"+hammingDistance+"/"+$('.argumentsForm #urirIP').val()
                 $("#busy-loader").show();  
@@ -653,6 +653,15 @@ var jsonObjRes = {};
                         }
 
                         jsonObjRes= $.parseJSON(data);
+
+                        // following code segment makes the screenshot URI got with event_html | event_html_similarto properties to a html fragment                       
+                        jsonObjRes[0].event_html= "<img src='"+jsonObjRes[0].event_html+"' width='300px' />";
+                        for(var i=1;i< jsonObjRes.length;i++){
+                            jsonObjRes[i].event_html= "<img src='"+jsonObjRes[i].event_html+"' width='300px' />";
+                            jsonObjRes[i].event_html_similarto= "<img src='"+jsonObjRes[i].event_html_similarto+"' width='300px' />";
+                        }
+
+
                         $(".statsWrapper").show();
                          window.timeline = new Timeline(jsonObjRes);
                         // place where the notch width is being reduced t0 2px.
