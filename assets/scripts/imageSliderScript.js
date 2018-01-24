@@ -43,12 +43,12 @@
 
 		console.log(imagesData);
 
-
 		
 		$('#play').click(function() {
 			slideImage(indexImage);
 			timeoutId = setInterval ( slideImage, 1000 );
 		});
+
 		$('#pause').click(function() {
 			clearInterval(timeoutId);
 		});
@@ -76,9 +76,13 @@
 
 
 	var slideImage = function(step) {
-			if ( step == undefined ) step = 1;
+			if ( step == undefined ){
+				//console.log("step is undefied now");
+				step = 1;
+			} 
 			clearTimeout ( timeoutId );
 			var indx = $('#myImage:visible').index('#myImage');
+
 
 			if ( step != 0 ) {
 			   $('#myImage:visible').show();
@@ -88,6 +92,10 @@
 			
 			if ( indexImage >= imagesData.length ) {
 				indexImage = 0;
+				// added the below two lines in this if block to stop the re-looping of images that was happening on play click
+				clearInterval(timeoutId);
+				return;
+
 			} else if ( indexImage < 0 ) {
 				indexImage = imagesData.length - 1;
 			}
