@@ -705,7 +705,4 @@ var jsonObjRes = {};
             
         });
     });
-
-
-
 })(window, document);
