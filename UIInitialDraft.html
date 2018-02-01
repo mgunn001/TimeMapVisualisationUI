@@ -45,6 +45,11 @@
 		<div class="container-fluid" style="max-width:90%;">
 			<div class="well row attributesWrapper" style="margin-top: 1%;">
 				<form action="#" class="argumentsForm">
+				<div class = "Title">
+					<img src="assets/images/odu-logo.png"  alt = "ODU Logo" >
+					<h1>TimeMap Visualization</h1>
+					
+				</div>
 					<div class="row URIWrapper" >			
 						  <div class="form-group">
 						    <label for="urirIP">Enter URI-R:</label>
@@ -71,11 +76,13 @@
 							<div class="form-group pull-right" style="margin-right:1%;">
 								<div class="dropdown">
 								    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" title="Advanced Settings"><i class="fa fa-cog" aria-hidden="true"></i></button>
-								    <ul class="dropdown-menu">
-								      <li class="form-group" style="padding:6%;">
+								    <ul class="dropdown-menu" >
+								      <li class="form-group"  style="padding:6%;">
 
 								      	<label for="hammingDistance">Threshold:</label>
 							    		<input class="form-control" style="width:40%;" type="number" title="Uniqueness Threshold"  name="hdt"  id="hammingDistance" value="4" />
+								      	<!--label for="screenshotDelta">Screenshot Delay: </label>
+							    		<input class="form-control" style="width:40%;" type="number" title="Sec Before ScreenShot"  name="ssd"  id="screenshotDelta" value="0" /-->
 								      </li>
 								      
 								    </ul>
@@ -218,9 +225,20 @@
 			
 		</div>
 
-		<div id="busy-loader" style="min-width:90%; display: none;">
-		</div>
 		
+		<div id = "footer">
+		<div class="container-fluid" style="max-width:90%;">
+		<div class="well row attributesWrapper" style="margin-top: 1%;">	
+			<a href= "http://ws-dl.blogspot.com/2017/10/2017-10-16-visualizing-webpage-changes.html">Full Description of the Project</a>
+			<br>
+			<a href="https://securegrants.neh.gov/publicquery/main.aspx?f=1&gn=HAA-256368-17">Funded by NEH/IMLS Digital Humanities Advancement Grant HAA-256368-17</a>
+			
+			<p>With our partners <a href="https://www.frick.org/research/library"> Frick Art Reference Library</a>, 
+			<a href="http://www.nyarc.org/">New York Art Resources Consortium</a> and 
+			<a href="http://library.columbia.edu/">Columbia University Libraries</a></p>
+		</div>
+		</div>
+		</div>
 		
 	</body>
 </html>

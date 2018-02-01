@@ -623,6 +623,10 @@ var jsonObjRes = {};
             if(hammingDistance == ""){
                 hammingDistance = 4;
             }
+//            var screenshotDelta = $('.argumentsForm #screenshotDelta').val();
+//            if(screenshotDelta == ""){
+//                screenshotDelta = 0;
+//            }
 
             if($(this).parents("form")[0].checkValidity()){
                 event.preventDefault();
